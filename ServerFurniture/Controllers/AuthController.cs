@@ -72,7 +72,8 @@ public class AuthController : ControllerBase
                 Email = email,
                 GoogleId = sub,
                 FullName = name ?? email,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTime.UtcNow,
+                RoleId = 2  // Default role for regular users
             };
             _db.Users.Add(user);
             await _db.SaveChangesAsync();

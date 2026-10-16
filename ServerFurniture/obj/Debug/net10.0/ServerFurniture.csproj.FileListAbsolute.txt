@@ -166,3 +166,8 @@ C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\bin\De
 C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\bin\Debug\net10.0\runtimes\win-x64\native\msalruntime.dll
 C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\bin\Debug\net10.0\runtimes\win-x86\native\msalruntime_x86.dll
 C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\obj\Debug\net10.0\ServerFurniture.sourcelink.json
+C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\bin\Debug\net10.0\Microsoft.Bcl.Cryptography.dll
+C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\bin\Debug\net10.0\ServerFurniture.staticwebassets.runtime.json
+C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\obj\Debug\net10.0\compressed\lkuzrtw0y9-{0}-nj4x1oo3ze-nj4x1oo3ze.gz

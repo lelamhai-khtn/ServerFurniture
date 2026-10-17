@@ -25,7 +25,95 @@ public class AuthController : ControllerBase
     }
 
     public record LoginRequest(string Email, string Password);
+
+    public record RegisterRequest(string FullName, string Email, string Password);
+
+    public record UserDto(
+        int UserId, 
+        string Email, 
+        string FullName, 
+        string? Phone, 
+        int RoleId,
+        string? Gender,
+        string? Address,
+        string? Avatar,
+        DateTime? CreatedAt);
+
     public record TokenResponse(string AccessToken, string RefreshToken, DateTime ExpiresAt);
+
+    public record LoginResponse(
+        string AccessToken, 
+        string RefreshToken, 
+        DateTime ExpiresAt,
+        UserDto User);
+
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] RegisterRequest req)
+    {
+        // Validate input
+        if (string.IsNullOrWhiteSpace(req.FullName))
+            return BadRequest("FullName không được để trống");
+
+        if (string.IsNullOrWhiteSpace(req.Email))
+            return BadRequest("Email không được để trống");
+
+        if (string.IsNullOrWhiteSpace(req.Password))
+            return BadRequest("Password không được để trống");
+
+        // Validate email format
+        try
+        {
+            var addr = new System.Net.Mail.MailAddress(req.Email);
+            if (addr.Address != req.Email)
+                return BadRequest("Email không hợp lệ");
+        }
+        catch
+        {
+            return BadRequest("Email không hợp lệ");
+        }
+
+        // Check if email already exists
+        var existingUser = await _db.Users.FirstOrDefaultAsync(u => u.Email == req.Email);
+        if (existingUser != null)
+            return BadRequest("Email đã được đăng ký");
+
+        // Hash password
+        var hashedPassword = PasswordHasher.Hash(req.Password);
+
+        // Create new user
+        var newUser = new User
+        {
+            FullName = req.FullName,
+            Email = req.Email,
+            PasswordHash = hashedPassword,
+            CreatedAt = DateTime.UtcNow,
+            RoleId = 2  // Default role for regular users
+        };
+
+        _db.Users.Add(newUser);
+        await _db.SaveChangesAsync();
+
+        // Create tokens
+        var access = _tokens.CreateAccessToken(newUser);
+        var refresh = _tokens.CreateRefreshToken(newUser.UserId, TimeSpan.FromDays(int.Parse(_config["Jwt:RefreshTokenExpirationDays"] ?? "30")));
+
+        _db.RefreshTokens.Add(refresh);
+        await _db.SaveChangesAsync();
+
+        // Create response
+        var userDto = new UserDto(
+            newUser.UserId,
+            newUser.Email,
+            newUser.FullName,
+            newUser.Phone,
+            newUser.RoleId,
+            newUser.Gender,
+            newUser.Address,
+            newUser.Avatar,
+            newUser.CreatedAt);
+
+        return Ok(new LoginResponse(access, refresh.Token, refresh.ExpiresAt, userDto));
+    }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest req)
@@ -43,7 +131,18 @@ public class AuthController : ControllerBase
         _db.RefreshTokens.Add(refresh);
         await _db.SaveChangesAsync();
 
-        return Ok(new TokenResponse(access, refresh.Token, refresh.ExpiresAt));
+        var userDto = new UserDto(
+            user.UserId,
+            user.Email,
+            user.FullName,
+            user.Phone,
+            user.RoleId,
+            user.Gender,
+            user.Address,
+            user.Avatar,
+            user.CreatedAt);
+
+        return Ok(new LoginResponse(access, refresh.Token, refresh.ExpiresAt, userDto));
     }
 
     public record GoogleLoginRequest(string IdToken);
@@ -61,6 +160,7 @@ public class AuthController : ControllerBase
         var email = payload.RootElement.GetProperty("email").GetString();
         var sub = payload.RootElement.GetProperty("sub").GetString();
         var name = payload.RootElement.TryGetProperty("name", out var n) ? n.GetString() : null;
+        var picture = payload.RootElement.TryGetProperty("picture", out var p) ? p.GetString() : null;
 
         if (email == null || sub == null) return Unauthorized("Invalid Google token payload");
 
@@ -72,11 +172,17 @@ public class AuthController : ControllerBase
                 Email = email,
                 GoogleId = sub,
                 FullName = name ?? email,
+                Avatar = picture,
                 CreatedAt = DateTime.UtcNow,
                 RoleId = 2  // Default role for regular users
             };
             _db.Users.Add(user);
             await _db.SaveChangesAsync();
+        }
+        else
+        {
+            // Reload user data to ensure all fields are populated
+            _db.Entry(user).Reload();
         }
 
         var access = _tokens.CreateAccessToken(user);
@@ -84,7 +190,18 @@ public class AuthController : ControllerBase
         _db.RefreshTokens.Add(refresh);
         await _db.SaveChangesAsync();
 
-        return Ok(new TokenResponse(access, refresh.Token, refresh.ExpiresAt));
+        var userDto = new UserDto(
+            user.UserId,
+            user.Email,
+            user.FullName,
+            user.Phone,
+            user.RoleId,
+            user.Gender,
+            user.Address,
+            user.Avatar,
+            user.CreatedAt);
+
+        return Ok(new LoginResponse(access, refresh.Token, refresh.ExpiresAt, userDto));
     }
 
     public record RefreshRequest(string RefreshToken);

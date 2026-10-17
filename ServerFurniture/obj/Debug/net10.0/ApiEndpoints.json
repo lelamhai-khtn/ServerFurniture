@@ -64,6 +64,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ServerFurniture.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/Auth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "ServerFurniture.Controllers.AuthController\u002BRegisterRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ServerFurniture.Controllers.UsersController",
     "Method": "Get",
     "RelativePath": "api/Users",

@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\wwwroot\\google-login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\wwwroot\\google-login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -19,48 +27,12 @@
       "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\serverfurniture.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\serverfurniture.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\serverfurniture.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\services\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\services\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\services\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\services\\itokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\models\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\models\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\Properties\\launchSettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Properties\\launchSettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,11 +42,61 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Models\\User.cs",
+              "RelativeDocumentMoniker": "ServerFurniture\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Models\\User.cs",
+              "RelativeToolTip": "ServerFurniture\\Models\\User.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAxwCcAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-17T14:14:58.817Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-10-16T16:19:11.946Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "ServerFurniture\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "ServerFurniture\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAqwHYAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-16T15:43:55.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "ServerFurniture\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Properties\\launchSettings.json",
+              "RelativeToolTip": "ServerFurniture\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-10-16T15:31:34.089Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "ServerFurniture.http",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\ServerFurniture.http",
               "RelativeDocumentMoniker": "ServerFurniture\\ServerFurniture.http",
@@ -82,190 +104,43 @@
               "RelativeToolTip": "ServerFurniture\\ServerFurniture.http",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2026-10-16T13:57:14.409Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-16T15:31:26.228Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "google-login.html",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\wwwroot\\google-login.html",
-              "RelativeDocumentMoniker": "ServerFurniture\\wwwroot\\google-login.html",
-              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\wwwroot\\google-login.html",
-              "RelativeToolTip": "ServerFurniture\\wwwroot\\google-login.html",
-              "ViewState": "AgIAAD8AAAAAAAAAAAApwIYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-10-16T12:52:28.23Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PasswordHasher.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Services\\PasswordHasher.cs",
-              "RelativeDocumentMoniker": "ServerFurniture\\Services\\PasswordHasher.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Services\\PasswordHasher.cs",
-              "RelativeToolTip": "ServerFurniture\\Services\\PasswordHasher.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "WeatherForecast.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\WeatherForecast.cs",
+              "RelativeDocumentMoniker": "ServerFurniture\\WeatherForecast.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\WeatherForecast.cs",
+              "RelativeToolTip": "ServerFurniture\\WeatherForecast.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-16T12:37:15.42Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-16T15:31:25.471Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\appsettings.json",
               "RelativeDocumentMoniker": "ServerFurniture\\appsettings.json",
               "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\appsettings.json",
               "RelativeToolTip": "ServerFurniture\\appsettings.json",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAYwBkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-10-16T12:08:23.525Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-16T15:24:38.196Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ServerFurniture",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\ServerFurniture.csproj",
-              "RelativeDocumentMoniker": "ServerFurniture\\ServerFurniture.csproj",
-              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\ServerFurniture.csproj",
-              "RelativeToolTip": "ServerFurniture\\ServerFurniture.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-10-16T12:25:41.675Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Program.cs",
               "RelativeDocumentMoniker": "ServerFurniture\\Program.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Program.cs",
               "RelativeToolTip": "ServerFurniture\\Program.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAwwDcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADQAAAAAAAAAAAAuwEEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-16T12:15:27.917Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "ServerFurniture\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "ServerFurniture\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-16T12:37:24.04Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "ServerFurniture\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "ServerFurniture\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAQwCsAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-16T12:25:22.686Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "ServerFurniture\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Properties\\launchSettings.json",
-              "RelativeToolTip": "ServerFurniture\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-10-16T13:51:23.335Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "RefreshToken.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Models\\RefreshToken.cs",
-              "RelativeDocumentMoniker": "ServerFurniture\\Models\\RefreshToken.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Models\\RefreshToken.cs",
-              "RelativeToolTip": "ServerFurniture\\Models\\RefreshToken.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-16T12:24:53.169Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "ServerFurniture\\Data\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Data\\AppDbContext.cs",
-              "RelativeToolTip": "ServerFurniture\\Data\\AppDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-16T12:21:17.213Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ITokenService.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Services\\ITokenService.cs",
-              "RelativeDocumentMoniker": "ServerFurniture\\Services\\ITokenService.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Services\\ITokenService.cs",
-              "RelativeToolTip": "ServerFurniture\\Services\\ITokenService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-16T12:24:57.097Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "TokenService.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Services\\TokenService.cs",
-              "RelativeDocumentMoniker": "ServerFurniture\\Services\\TokenService.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Services\\TokenService.cs",
-              "RelativeToolTip": "ServerFurniture\\Services\\TokenService.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-16T12:25:03.783Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Models\\User.cs",
-              "RelativeDocumentMoniker": "ServerFurniture\\Models\\User.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Models\\User.cs",
-              "RelativeToolTip": "ServerFurniture\\Models\\User.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-16T12:21:22.831Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "ServerFurniture\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "ServerFurniture\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-16T12:21:28.083Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-16T15:24:29.506Z"
             }
           ]
         }

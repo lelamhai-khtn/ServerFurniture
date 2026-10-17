@@ -31,5 +31,14 @@ public class User
     [MaxLength(500)]
     public string? FcmToken { get; set; }
 
+    [MaxLength(10)]
+    public string? Gender { get; set; }
+
+    [MaxLength(500)]
+    public string? Address { get; set; }
+
+    [MaxLength(1000)]
+    public string? Avatar { get; set; }
+
     public DateTime? CreatedAt { get; set; }
 }

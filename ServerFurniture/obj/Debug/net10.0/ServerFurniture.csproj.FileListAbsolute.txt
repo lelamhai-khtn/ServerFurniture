@@ -25,7 +25,6 @@ C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\obj\De
 C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\obj\Debug\net10.0\staticwebassets.development.json
 C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\obj\Debug\net10.0\swae.build.ex.cache
-C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\obj\Debug\net10.0\ServerFu.F8EC4E41.Up2Date
 C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\obj\Debug\net10.0\ServerFurniture.dll
 C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\obj\Debug\net10.0\refint\ServerFurniture.dll
@@ -171,3 +170,4 @@ C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\bin\De
 C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\bin\Debug\net10.0\Microsoft.Bcl.Cryptography.dll
 C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\bin\Debug\net10.0\ServerFurniture.staticwebassets.runtime.json
 C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\obj\Debug\net10.0\compressed\lkuzrtw0y9-{0}-nj4x1oo3ze-nj4x1oo3ze.gz
+C:\Users\ADMIN\Documents\PTIT\HK7\Android\ServerFurniture\ServerFurniture\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

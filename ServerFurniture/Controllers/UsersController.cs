@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ServerFurniture.Data;
-using ServerFurniture.Models;
 
 namespace ServerFurniture.Controllers;
 
@@ -9,8 +8,8 @@ namespace ServerFurniture.Controllers;
 [Route("api/[controller]")]
 public class UsersController : ControllerBase
 {
-    private readonly AppDbContext _db;
-    public UsersController(AppDbContext db) => _db = db;
+    private readonly FurnitureContext _db;
+    public UsersController(FurnitureContext db) => _db = db;
 
     [HttpGet]
     public async Task<IActionResult> Get()

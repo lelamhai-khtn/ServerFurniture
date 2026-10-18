@@ -1,4 +1,4 @@
-using ServerFurniture.Models;
+using ServerFurniture.Data;
 
 namespace ServerFurniture.Services;
 

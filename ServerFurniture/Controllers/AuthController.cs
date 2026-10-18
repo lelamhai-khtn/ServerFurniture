@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ServerFurniture.Data;
 using System.Security.Cryptography;
-using ServerFurniture.Models;
 using ServerFurniture.Services;
 
 namespace ServerFurniture.Controllers;
@@ -11,12 +10,12 @@ namespace ServerFurniture.Controllers;
 [Route("api/[controller]")]
 public class AuthController : ControllerBase
 {
-    private readonly AppDbContext _db;
+    private readonly FurnitureContext _db;
     private readonly ITokenService _tokens;
     private readonly IConfiguration _config;
     private readonly IHttpClientFactory _httpClientFactory;
 
-    public AuthController(AppDbContext db, ITokenService tokens, IConfiguration config, IHttpClientFactory httpClientFactory)
+    public AuthController(FurnitureContext db, ITokenService tokens, IConfiguration config, IHttpClientFactory httpClientFactory)
     {
         _db = db;
         _tokens = tokens;
@@ -72,8 +71,11 @@ public class AuthController : ControllerBase
             return BadRequest("Email không hợp lệ");
         }
 
-        // Check if email already exists
-        var existingUser = await _db.Users.FirstOrDefaultAsync(u => u.Email == req.Email);
+        // Normalize email (lowercase)
+        var normalizedEmail = req.Email.ToLower().Trim();
+
+        // Check if email already exists (with normalized check for race condition)
+        var existingUser = await _db.Users.FirstOrDefaultAsync(u => u.Email == normalizedEmail);
         if (existingUser != null)
             return BadRequest("Email đã được đăng ký");
 
@@ -84,14 +86,24 @@ public class AuthController : ControllerBase
         var newUser = new User
         {
             FullName = req.FullName,
-            Email = req.Email,
+            Email = normalizedEmail,
             PasswordHash = hashedPassword,
             CreatedAt = DateTime.UtcNow,
             RoleId = 2  // Default role for regular users
         };
 
-        _db.Users.Add(newUser);
-        await _db.SaveChangesAsync();
+        try
+        {
+            _db.Users.Add(newUser);
+            await _db.SaveChangesAsync();
+        }
+        catch (DbUpdateException ex)
+        {
+            // Handle unique constraint violation (race condition)
+            if (ex.InnerException?.Message.Contains("duplicate") ?? false)
+                return BadRequest("Email đã được đăng ký");
+            throw;
+        }
 
         // Create tokens
         var access = _tokens.CreateAccessToken(newUser);
@@ -120,6 +132,10 @@ public class AuthController : ControllerBase
     {
         var user = await _db.Users.FirstOrDefaultAsync(u => u.Email == req.Email);
         if (user == null) return Unauthorized("Invalid credentials");
+
+        // Check if user has password (registered with email/password)
+        if (string.IsNullOrEmpty(user.PasswordHash))
+            return Unauthorized("User was registered with Google. Please use Google Sign-In");
 
         // Verify password using PBKDF2 helper
         if (!PasswordHasher.Verify(req.Password, user.PasswordHash))
@@ -164,25 +180,44 @@ public class AuthController : ControllerBase
 
         if (email == null || sub == null) return Unauthorized("Invalid Google token payload");
 
-        var user = await _db.Users.FirstOrDefaultAsync(u => u.GoogleId == sub || u.Email == email);
+        var user = await _db.Users.FirstOrDefaultAsync(u => u.GoogleId == sub);
+
         if (user == null)
         {
-            user = new User
+            // Check if user exists by email but not linked to Google
+            user = await _db.Users.FirstOrDefaultAsync(u => u.Email == email);
+            if (user != null)
             {
-                Email = email,
-                GoogleId = sub,
-                FullName = name ?? email,
-                Avatar = picture,
-                CreatedAt = DateTime.UtcNow,
-                RoleId = 2  // Default role for regular users
-            };
-            _db.Users.Add(user);
+                // Link Google account to existing email
+                user.GoogleId = sub;
+                user.Avatar = picture ?? user.Avatar;
+                _db.Users.Update(user);
+            }
+            else
+            {
+                // Create new user from Google
+                user = new User
+                {
+                    Email = email,
+                    GoogleId = sub,
+                    FullName = name ?? email,
+                    Avatar = picture,
+                    CreatedAt = DateTime.UtcNow,
+                    RoleId = 2  // Default role for regular users
+                };
+                _db.Users.Add(user);
+            }
             await _db.SaveChangesAsync();
         }
         else
         {
-            // Reload user data to ensure all fields are populated
-            _db.Entry(user).Reload();
+            // User already linked, just update avatar if changed
+            if (!string.IsNullOrEmpty(picture) && user.Avatar != picture)
+            {
+                user.Avatar = picture;
+                _db.Users.Update(user);
+                await _db.SaveChangesAsync();
+            }
         }
 
         var access = _tokens.CreateAccessToken(user);

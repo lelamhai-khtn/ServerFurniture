@@ -9,10 +9,10 @@ namespace ServerFurniture.Controllers;
 [Route("api/[controller]")]
 public class AdminController : ControllerBase
 {
-    private readonly AppDbContext _db;
+    private readonly FurnitureContext _db;
     private readonly IWebHostEnvironment _env;
 
-    public AdminController(AppDbContext db, IWebHostEnvironment env)
+    public AdminController(FurnitureContext db, IWebHostEnvironment env)
     {
         _db = db;
         _env = env;

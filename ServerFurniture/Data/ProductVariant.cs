@@ -17,6 +17,12 @@ public partial class ProductVariant
 
     public int? StockQuantity { get; set; }
 
+    public decimal? DiscountPrice { get; set; }
+
+    public decimal? DiscountPercent { get; set; }
+
+    public bool? IsOnSale { get; set; }
+
     public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 
     public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();

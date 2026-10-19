@@ -49,9 +49,9 @@ public partial class FurnitureContext : DbContext
     {
         modelBuilder.Entity<Cart>(entity =>
         {
-            entity.HasKey(e => e.CartId).HasName("PK__Carts__51BCD7B7EB15C396");
+            entity.HasKey(e => e.CartId).HasName("PK__Carts__51BCD7B7AF637FE4");
 
-            entity.HasIndex(e => e.UserId, "UQ__Carts__1788CC4DC904ED45").IsUnique();
+            entity.HasIndex(e => e.UserId, "UQ__Carts__1788CC4DCB26C7F9").IsUnique();
 
             entity.Property(e => e.UpdatedAt)
                 .HasDefaultValueSql("(getdate())")
@@ -60,28 +60,28 @@ public partial class FurnitureContext : DbContext
             entity.HasOne(d => d.User).WithOne(p => p.Cart)
                 .HasForeignKey<Cart>(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Carts__UserId__4BAC3F29");
+                .HasConstraintName("FK__Carts__UserId__4CA06362");
         });
 
         modelBuilder.Entity<CartItem>(entity =>
         {
-            entity.HasKey(e => e.CartItemId).HasName("PK__CartItem__488B0B0AC0EC646C");
+            entity.HasKey(e => e.CartItemId).HasName("PK__CartItem__488B0B0A12457792");
 
             entity.Property(e => e.Quantity).HasDefaultValue(1);
 
             entity.HasOne(d => d.Cart).WithMany(p => p.CartItems)
                 .HasForeignKey(d => d.CartId)
-                .HasConstraintName("FK__CartItems__CartI__4F7CD00D");
+                .HasConstraintName("FK__CartItems__CartI__5070F446");
 
             entity.HasOne(d => d.Variant).WithMany(p => p.CartItems)
                 .HasForeignKey(d => d.VariantId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__CartItems__Varia__5070F446");
+                .HasConstraintName("FK__CartItems__Varia__5165187F");
         });
 
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.CategoryId).HasName("PK__Categori__19093A0B09E988D1");
+            entity.HasKey(e => e.CategoryId).HasName("PK__Categori__19093A0B47EF3484");
 
             entity.Property(e => e.CategoryName).HasMaxLength(100);
             entity.Property(e => e.ImageUrl).HasMaxLength(500);
@@ -93,7 +93,7 @@ public partial class FurnitureContext : DbContext
 
         modelBuilder.Entity<Notification>(entity =>
         {
-            entity.HasKey(e => e.NotificationId).HasName("PK__Notifica__20CF2E128AD87A4B");
+            entity.HasKey(e => e.NotificationId).HasName("PK__Notifica__20CF2E12BB540FE6");
 
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
@@ -104,12 +104,12 @@ public partial class FurnitureContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.Notifications)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Notificat__UserI__693CA210");
+                .HasConstraintName("FK__Notificat__UserI__6A30C649");
         });
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BCF229ED661");
+            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BCFB0AC93B5");
 
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
@@ -123,35 +123,35 @@ public partial class FurnitureContext : DbContext
 
             entity.HasOne(d => d.ShipperInstaller).WithMany(p => p.OrderShipperInstallers)
                 .HasForeignKey(d => d.ShipperInstallerId)
-                .HasConstraintName("FK__Orders__ShipperI__5629CD9C");
+                .HasConstraintName("FK__Orders__ShipperI__571DF1D5");
 
             entity.HasOne(d => d.User).WithMany(p => p.OrderUsers)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Orders__UserId__5535A963");
+                .HasConstraintName("FK__Orders__UserId__5629CD9C");
         });
 
         modelBuilder.Entity<OrderItem>(entity =>
         {
-            entity.HasKey(e => e.OrderItemId).HasName("PK__OrderIte__57ED068111657ABC");
+            entity.HasKey(e => e.OrderItemId).HasName("PK__OrderIte__57ED0681BDF783E3");
 
             entity.Property(e => e.UnitPrice).HasColumnType("decimal(18, 2)");
 
             entity.HasOne(d => d.Order).WithMany(p => p.OrderItems)
                 .HasForeignKey(d => d.OrderId)
-                .HasConstraintName("FK__OrderItem__Order__59063A47");
+                .HasConstraintName("FK__OrderItem__Order__59FA5E80");
 
             entity.HasOne(d => d.Variant).WithMany(p => p.OrderItems)
                 .HasForeignKey(d => d.VariantId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__OrderItem__Varia__59FA5E80");
+                .HasConstraintName("FK__OrderItem__Varia__5AEE82B9");
         });
 
         modelBuilder.Entity<Payment>(entity =>
         {
-            entity.HasKey(e => e.PaymentId).HasName("PK__Payments__9B556A3820781571");
+            entity.HasKey(e => e.PaymentId).HasName("PK__Payments__9B556A3868A86E5F");
 
-            entity.HasIndex(e => e.OrderId, "UQ__Payments__C3905BCEB6E41B38").IsUnique();
+            entity.HasIndex(e => e.OrderId, "UQ__Payments__C3905BCEB2635AFF").IsUnique();
 
             entity.Property(e => e.PaidAt).HasColumnType("datetime");
             entity.Property(e => e.PaymentGateway).HasMaxLength(50);
@@ -164,12 +164,12 @@ public partial class FurnitureContext : DbContext
 
             entity.HasOne(d => d.Order).WithOne(p => p.Payment)
                 .HasForeignKey<Payment>(d => d.OrderId)
-                .HasConstraintName("FK__Payments__OrderI__5EBF139D");
+                .HasConstraintName("FK__Payments__OrderI__5FB337D6");
         });
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6CD4CC2C10E");
+            entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6CD16C48659");
 
             entity.Property(e => e.BaseMaterial).HasMaxLength(100);
             entity.Property(e => e.CreatedAt)
@@ -189,23 +189,26 @@ public partial class FurnitureContext : DbContext
 
         modelBuilder.Entity<ProductVariant>(entity =>
         {
-            entity.HasKey(e => e.VariantId).HasName("PK__ProductV__0EA233846E8374AC");
+            entity.HasKey(e => e.VariantId).HasName("PK__ProductV__0EA23384A7B54033");
 
             entity.Property(e => e.Color).HasMaxLength(50);
+            entity.Property(e => e.DiscountPercent).HasColumnType("decimal(5, 2)");
+            entity.Property(e => e.DiscountPrice).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.IsOnSale).HasDefaultValue(false);
             entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.StockQuantity).HasDefaultValue(0);
             entity.Property(e => e.UpholsteryMaterial).HasMaxLength(100);
 
             entity.HasOne(d => d.Product).WithMany(p => p.ProductVariants)
                 .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK__ProductVa__Produ__46E78A0C");
+                .HasConstraintName("FK__ProductVa__Produ__47DBAE45");
         });
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.RoleId).HasName("PK__Roles__8AFACE1AFEEBFB82");
+            entity.HasKey(e => e.RoleId).HasName("PK__Roles__8AFACE1AB752BE28");
 
-            entity.HasIndex(e => e.RoleName, "UQ__Roles__8A2B6160B6464B9F").IsUnique();
+            entity.HasIndex(e => e.RoleName, "UQ__Roles__8A2B6160B313E24B").IsUnique();
 
             entity.Property(e => e.RoleName)
                 .HasMaxLength(50)
@@ -214,13 +217,13 @@ public partial class FurnitureContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4CD7298ED4");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4CD00CD421");
 
             entity.HasIndex(e => e.GoogleId, "UQ_Users_GoogleId")
                 .IsUnique()
                 .HasFilter("([GoogleId] IS NOT NULL)");
 
-            entity.HasIndex(e => e.Email, "UQ__Users__A9D1053409549B31").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Users__A9D10534762F886B").IsUnique();
 
             entity.Property(e => e.Address).HasMaxLength(500);
             entity.Property(e => e.Avatar).HasMaxLength(1000);
@@ -241,9 +244,9 @@ public partial class FurnitureContext : DbContext
 
         modelBuilder.Entity<Wishlist>(entity =>
         {
-            entity.HasKey(e => e.WishlistId).HasName("PK__Wishlist__233189EBBCFF6B3A");
+            entity.HasKey(e => e.WishlistId).HasName("PK__Wishlist__233189EBA8125CE5");
 
-            entity.HasIndex(e => new { e.UserId, e.ProductId }, "UQ__Wishlist__DCC80021007432A1").IsUnique();
+            entity.HasIndex(e => new { e.UserId, e.ProductId }, "UQ__Wishlist__DCC80021A4833C39").IsUnique();
 
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
@@ -251,12 +254,12 @@ public partial class FurnitureContext : DbContext
 
             entity.HasOne(d => d.Product).WithMany(p => p.Wishlists)
                 .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK__Wishlists__Produ__6477ECF3");
+                .HasConstraintName("FK__Wishlists__Produ__656C112C");
 
             entity.HasOne(d => d.User).WithMany(p => p.Wishlists)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Wishlists__UserI__6383C8BA");
+                .HasConstraintName("FK__Wishlists__UserI__6477ECF3");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -75,11 +75,13 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Apply any pending EF Core migrations at startup (convenient for development).
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<FurnitureContext>();
-    db.Database.Migrate();
-}
+// Note: Migrations are intentionally not applied at startup because the database
+// was scaffolded from an existing schema. RefreshTokens table was created manually via SQL.
+// Uncomment below if adding new migrations in the future.
+// using (var scope = app.Services.CreateScope())
+// {
+//     var db = scope.ServiceProvider.GetRequiredService<FurnitureContext>();
+//     db.Database.Migrate();
+// }
 
 app.Run();

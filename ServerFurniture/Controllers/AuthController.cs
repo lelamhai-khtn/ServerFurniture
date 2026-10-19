@@ -28,91 +28,46 @@ public class AuthController : ControllerBase
     public record RegisterRequest(string FullName, string Email, string Password);
 
     public record UserDto(
-        int UserId, 
-        string Email, 
-        string FullName, 
-        string? Phone, 
+        int UserId,
+        string Email,
+        string? FullName,
+        string? Phone,
         int RoleId,
         string? Gender,
         string? Address,
         string? Avatar,
-        DateTime? CreatedAt);
+        DateTime CreatedAt);
 
-    public record TokenResponse(string AccessToken, string RefreshToken, DateTime ExpiresAt);
+    public record LoginResponse(string AccessToken, string RefreshToken, DateTime RefreshExpiresAt, UserDto User);
 
-    public record LoginResponse(
-        string AccessToken, 
-        string RefreshToken, 
-        DateTime ExpiresAt,
-        UserDto User);
+    public record TokenResponse(string AccessToken, string RefreshToken, DateTime RefreshExpiresAt);
 
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest req)
     {
-        // Validate input
-        if (string.IsNullOrWhiteSpace(req.FullName))
-            return BadRequest("FullName không được để trống");
-
-        if (string.IsNullOrWhiteSpace(req.Email))
-            return BadRequest("Email không được để trống");
-
-        if (string.IsNullOrWhiteSpace(req.Password))
-            return BadRequest("Password không được để trống");
-
-        // Validate email format
-        try
-        {
-            var addr = new System.Net.Mail.MailAddress(req.Email);
-            if (addr.Address != req.Email)
-                return BadRequest("Email không hợp lệ");
-        }
-        catch
-        {
-            return BadRequest("Email không hợp lệ");
-        }
-
-        // Normalize email (lowercase)
-        var normalizedEmail = req.Email.ToLower().Trim();
-
-        // Check if email already exists (with normalized check for race condition)
+        var normalizedEmail = req.Email.ToLower();
         var existingUser = await _db.Users.FirstOrDefaultAsync(u => u.Email == normalizedEmail);
         if (existingUser != null)
-            return BadRequest("Email đã được đăng ký");
+            return BadRequest("Email already registered");
 
-        // Hash password
-        var hashedPassword = PasswordHasher.Hash(req.Password);
-
-        // Create new user
         var newUser = new User
         {
-            FullName = req.FullName,
             Email = normalizedEmail,
-            PasswordHash = hashedPassword,
+            FullName = req.FullName,
+            PasswordHash = PasswordHasher.Hash(req.Password),
             CreatedAt = DateTime.UtcNow,
             RoleId = 2  // Default role for regular users
         };
 
-        try
-        {
-            _db.Users.Add(newUser);
-            await _db.SaveChangesAsync();
-        }
-        catch (DbUpdateException ex)
-        {
-            // Handle unique constraint violation (race condition)
-            if (ex.InnerException?.Message.Contains("duplicate") ?? false)
-                return BadRequest("Email đã được đăng ký");
-            throw;
-        }
+        _db.Users.Add(newUser);
+        await _db.SaveChangesAsync();
 
-        // Create tokens
         var access = _tokens.CreateAccessToken(newUser);
         var refresh = _tokens.CreateRefreshToken(newUser.UserId, TimeSpan.FromDays(int.Parse(_config["Jwt:RefreshTokenExpirationDays"] ?? "30")));
 
         _db.RefreshTokens.Add(refresh);
         await _db.SaveChangesAsync();
 
-        // Create response
         var userDto = new UserDto(
             newUser.UserId,
             newUser.Email,
@@ -122,7 +77,7 @@ public class AuthController : ControllerBase
             newUser.Gender,
             newUser.Address,
             newUser.Avatar,
-            newUser.CreatedAt);
+            newUser.CreatedAt ?? DateTime.UtcNow);
 
         return Ok(new LoginResponse(access, refresh.Token, refresh.ExpiresAt, userDto));
     }
@@ -130,16 +85,9 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest req)
     {
-        var user = await _db.Users.FirstOrDefaultAsync(u => u.Email == req.Email);
-        if (user == null) return Unauthorized("Invalid credentials");
-
-        // Check if user has password (registered with email/password)
-        if (string.IsNullOrEmpty(user.PasswordHash))
-            return Unauthorized("User was registered with Google. Please use Google Sign-In");
-
-        // Verify password using PBKDF2 helper
-        if (!PasswordHasher.Verify(req.Password, user.PasswordHash))
-            return Unauthorized("Invalid credentials");
+        var user = await _db.Users.FirstOrDefaultAsync(u => u.Email == req.Email.ToLower());
+        if (user == null || !PasswordHasher.Verify(req.Password, user.PasswordHash))
+            return Unauthorized("Invalid email or password");
 
         var access = _tokens.CreateAccessToken(user);
         var refresh = _tokens.CreateRefreshToken(user.UserId, TimeSpan.FromDays(int.Parse(_config["Jwt:RefreshTokenExpirationDays"] ?? "30")));
@@ -156,7 +104,7 @@ public class AuthController : ControllerBase
             user.Gender,
             user.Address,
             user.Avatar,
-            user.CreatedAt);
+            user.CreatedAt ?? DateTime.UtcNow);
 
         return Ok(new LoginResponse(access, refresh.Token, refresh.ExpiresAt, userDto));
     }
@@ -234,7 +182,7 @@ public class AuthController : ControllerBase
             user.Gender,
             user.Address,
             user.Avatar,
-            user.CreatedAt);
+            user.CreatedAt ?? DateTime.UtcNow);
 
         return Ok(new LoginResponse(access, refresh.Token, refresh.ExpiresAt, userDto));
     }
@@ -251,8 +199,6 @@ public class AuthController : ControllerBase
         // revoke existing and issue new refresh token
         existing.Revoked = true;
         var newRefresh = _tokens.CreateRefreshToken(existing.UserId, TimeSpan.FromDays(int.Parse(_config["Jwt:RefreshTokenExpirationDays"] ?? "30")));
-        newRefresh.ReplacedByToken = null;
-        existing.ReplacedByToken = newRefresh.Token;
 
         _db.RefreshTokens.Add(newRefresh);
         await _db.SaveChangesAsync();
@@ -261,5 +207,3 @@ public class AuthController : ControllerBase
         return Ok(new TokenResponse(access, newRefresh.Token, newRefresh.ExpiresAt));
     }
 }
-
-// Password hashing moved to Services/PasswordHasher

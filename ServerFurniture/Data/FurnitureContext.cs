@@ -42,8 +42,7 @@ public partial class FurnitureContext : DbContext
     public virtual DbSet<Wishlist> Wishlists { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=localhost;Database=Furniture;User Id=sa;Password=123456;Encrypt=True;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Name=DefaultConnection");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -85,10 +84,6 @@ public partial class FurnitureContext : DbContext
 
             entity.Property(e => e.CategoryName).HasMaxLength(100);
             entity.Property(e => e.ImageUrl).HasMaxLength(500);
-
-            entity.HasOne(d => d.Parent).WithMany(p => p.InverseParent)
-                .HasForeignKey(d => d.ParentId)
-                .HasConstraintName("FK__Categorie__Paren__3F466844");
         });
 
         modelBuilder.Entity<Notification>(entity =>
@@ -202,6 +197,15 @@ public partial class FurnitureContext : DbContext
             entity.HasOne(d => d.Product).WithMany(p => p.ProductVariants)
                 .HasForeignKey(d => d.ProductId)
                 .HasConstraintName("FK__ProductVa__Produ__47DBAE45");
+        });
+
+        modelBuilder.Entity<RefreshToken>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__RefreshT__3214EC0770EF6435");
+
+            entity.HasIndex(e => e.UserId, "IX_RefreshTokens_UserId");
+
+            entity.HasOne(d => d.User).WithMany(p => p.RefreshTokens).HasForeignKey(d => d.UserId);
         });
 
         modelBuilder.Entity<Role>(entity =>

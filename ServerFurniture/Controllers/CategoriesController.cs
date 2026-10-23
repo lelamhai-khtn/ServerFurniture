@@ -26,7 +26,6 @@ public class CategoriesController : ControllerBase
         var result = categories.Select(c => new
         {
             c.CategoryId,
-            c.ParentId,
             c.CategoryName,
             imageUrl = string.IsNullOrEmpty(c.ImageUrl) ? null : $"{baseUrl}{c.ImageUrl}"
         });
@@ -44,7 +43,6 @@ public class CategoriesController : ControllerBase
         var result = new
         {
             category.CategoryId,
-            category.ParentId,
             category.CategoryName,
             imageUrl = string.IsNullOrEmpty(category.ImageUrl) ? null : $"{baseUrl}{category.ImageUrl}"
         };

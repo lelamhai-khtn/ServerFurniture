@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace ServerFurniture.Data;
@@ -17,5 +17,5 @@ public partial class RefreshToken
 
     public bool Revoked { get; set; }
 
-    public virtual User? User { get; set; }
+    public virtual User User { get; set; } = null!;
 }

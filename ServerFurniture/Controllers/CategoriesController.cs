@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ServerFurniture.Data;
@@ -5,6 +6,7 @@ using ServerFurniture.Data;
 namespace ServerFurniture.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class CategoriesController : ControllerBase
 {

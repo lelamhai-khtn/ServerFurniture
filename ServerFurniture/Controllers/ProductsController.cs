@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ServerFurniture.Data;
@@ -5,6 +6,7 @@ using ServerFurniture.Data;
 namespace ServerFurniture.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class ProductsController : ControllerBase
 {
@@ -20,7 +22,6 @@ public class ProductsController : ControllerBase
     /// Endpoint: GET /api/products/top-discounts?limit=3 hoặc GET /api/products/best-deals
     /// </summary>
     [HttpGet("top-discounts")]
-    [HttpGet("best-deals")]
     public async Task<IActionResult> GetTopDiscounts([FromQuery] int limit = 3)
     {
         var baseUrl = $"{Request.Scheme}://{Request.Host}";
@@ -293,51 +294,5 @@ public class ProductsController : ControllerBase
         };
 
         return Ok(result);
-    }
-
-    /// <summary>
-    /// Thêm hoặc bỏ yêu thích sản phẩm (Toggle Favorite)
-    /// Endpoint: POST /api/products/{id}/favorite?userId=1
-    /// </summary>
-    [HttpPost("{id:int}/favorite")]
-    public async Task<IActionResult> ToggleFavorite(int id, [FromQuery] int? userId = null, [FromBody] FavoriteRequest? request = null)
-    {
-        var targetUserId = userId ?? request?.UserId;
-        if (!targetUserId.HasValue)
-        {
-            var subClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value
-                ?? User.FindFirst("sub")?.Value;
-            if (int.TryParse(subClaim, out var parsedId))
-                targetUserId = parsedId;
-        }
-
-        if (!targetUserId.HasValue)
-            return BadRequest(new { message = "Vui lòng cung cấp userId hoặc đăng nhập để tiếp tục." });
-
-        var productExists = await _db.Products.AnyAsync(p => p.ProductId == id);
-        if (!productExists)
-            return NotFound(new { message = "Không tìm thấy sản phẩm." });
-
-        var existing = await _db.Wishlists
-            .FirstOrDefaultAsync(w => w.UserId == targetUserId.Value && w.ProductId == id);
-
-        if (existing != null)
-        {
-            _db.Wishlists.Remove(existing);
-            await _db.SaveChangesAsync();
-            return Ok(new { isFavorited = false, message = "Đã xóa khỏi danh sách yêu thích.", productId = id });
-        }
-        else
-        {
-            var wishlistItem = new Wishlist
-            {
-                UserId = targetUserId.Value,
-                ProductId = id,
-                CreatedAt = DateTime.UtcNow
-            };
-            _db.Wishlists.Add(wishlistItem);
-            await _db.SaveChangesAsync();
-            return Ok(new { isFavorited = true, message = "Đã thêm vào danh sách yêu thích.", productId = id });
-        }
     }
 }

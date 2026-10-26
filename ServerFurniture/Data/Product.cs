@@ -13,6 +13,18 @@ public partial class Product
 
     public string? Description { get; set; }
 
+    public string? ImageUrl { get; set; }
+
+    public decimal Price { get; set; }
+
+    public decimal? DiscountPrice { get; set; }
+
+    public int? StockQuantity { get; set; }
+
+    public string? Color { get; set; }
+
+    public string? UpholsteryMaterial { get; set; }
+
     public double LengthCm { get; set; }
 
     public double WidthCm { get; set; }
@@ -25,9 +37,11 @@ public partial class Product
 
     public DateTime? CreatedAt { get; set; }
 
+    public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
+
     public virtual Category Category { get; set; } = null!;
 
-    public virtual ICollection<ProductVariant> ProductVariants { get; set; } = new List<ProductVariant>();
+    public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
     public virtual ICollection<Wishlist> Wishlists { get; set; } = new List<Wishlist>();
 }

@@ -6,10 +6,10 @@
   },
   "servers": [
     {
-      "url": "http://192.168.1.5:7279"
+      "url": "http://192.168.1.10:7279"
     },
     {
-      "url": "http://192.168.1.5:5000"
+      "url": "http://192.168.1.10:5000"
     }
   ],
   "paths": {
@@ -542,11 +542,11 @@
     "schemas": {
       "AddCartItemRequest": {
         "required": [
-          "variantId"
+          "productId"
         ],
         "type": "object",
         "properties": {
-          "variantId": {
+          "productId": {
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "integer",

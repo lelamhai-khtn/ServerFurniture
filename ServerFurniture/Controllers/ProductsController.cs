@@ -17,6 +17,46 @@ public class ProductsController : ControllerBase
         _db = db;
     }
 
+    private static object MapProductResponse(Product p, string baseUrl)
+    {
+        var discountPercent = (p.Price > 0 && p.DiscountPrice.HasValue && p.DiscountPrice < p.Price)
+            ? Math.Round((1 - (p.DiscountPrice.Value / p.Price)) * 100, 2)
+            : 0;
+        var originalPrice = p.Price;
+        var discountPrice = p.DiscountPrice ?? p.Price;
+
+        var imageUrl = !string.IsNullOrEmpty(p.ImageUrl)
+            ? $"{baseUrl}{p.ImageUrl}"
+            : !string.IsNullOrEmpty(p.Category?.ImageUrl)
+                ? $"{baseUrl}{p.Category.ImageUrl}"
+                : $"{baseUrl}/images/chair.png";
+
+        return new
+        {
+            p.ProductId,
+            p.ProductName,
+            p.Description,
+            p.CategoryId,
+            categoryName = p.Category?.CategoryName,
+            imageUrl,
+            discountPercent,
+            originalPrice,
+            discountPrice,
+            p.Color,
+            p.UpholsteryMaterial,
+            stockQuantity = p.StockQuantity ?? 0,
+            p.BaseMaterial,
+            p.CreatedAt,
+            dimensions = new
+            {
+                p.LengthCm,
+                p.WidthCm,
+                p.HeightCm,
+                p.WeightKg
+            }
+        };
+    }
+
     /// <summary>
     /// Lấy top các sản phẩm có phần trăm giảm giá (discount) cao nhất (mặc định lấy 3 sản phẩm cho banner)
     /// Endpoint: GET /api/products/top-discounts?limit=3 hoặc GET /api/products/best-deals
@@ -26,13 +66,12 @@ public class ProductsController : ControllerBase
     {
         var baseUrl = $"{Request.Scheme}://{Request.Host}";
 
-        // Lấy danh sách sản phẩm có biến thể giảm giá, sắp xếp theo % giảm giá cao nhất
+        // Lấy danh sách sản phẩm có giảm giá, sắp xếp theo % giảm giá cao nhất
         var products = await _db.Products
             .AsNoTracking()
             .Include(p => p.Category)
-            .Include(p => p.ProductVariants)
-            .Where(p => p.ProductVariants.Any(v => (v.DiscountPercent ?? 0) > 0))
-            .OrderByDescending(p => p.ProductVariants.Max(v => v.DiscountPercent ?? 0))
+            .Where(p => p.DiscountPrice != null && p.DiscountPrice < p.Price && p.Price > 0)
+            .OrderByDescending(p => (p.Price - p.DiscountPrice!.Value) / p.Price)
             .Take(limit)
             .ToListAsync();
 
@@ -42,68 +81,18 @@ public class ProductsController : ControllerBase
             products = await _db.Products
                 .AsNoTracking()
                 .Include(p => p.Category)
-                .Include(p => p.ProductVariants)
                 .OrderByDescending(p => p.CreatedAt)
                 .Take(limit)
                 .ToListAsync();
         }
 
-        var result = products.Select(p =>
-        {
-            // Lấy biến thể có % giảm giá cao nhất của sản phẩm đó
-            var bestVariant = p.ProductVariants
-                .OrderByDescending(v => v.DiscountPercent ?? 0)
-                .ThenBy(v => v.DiscountPrice ?? v.Price)
-                .FirstOrDefault();
-
-            var discountPercent = bestVariant?.DiscountPercent ?? 0;
-            var originalPrice = bestVariant?.Price ?? 0;
-            var discountPrice = bestVariant?.DiscountPrice 
-                ?? (discountPercent > 0 ? originalPrice * (1 - (discountPercent / 100)) : originalPrice);
-
-            var imageUrl = !string.IsNullOrEmpty(p.Category?.ImageUrl)
-                ? $"{baseUrl}{p.Category.ImageUrl}"
-                : $"{baseUrl}/images/chair.png";
-
-            return new
-            {
-                p.ProductId,
-                p.ProductName,
-                p.Description,
-                p.CategoryId,
-                categoryName = p.Category?.CategoryName,
-                imageUrl,
-                discountPercent,
-                originalPrice,
-                discountPrice,
-                p.BaseMaterial,
-                dimensions = new
-                {
-                    p.LengthCm,
-                    p.WidthCm,
-                    p.HeightCm,
-                    p.WeightKg
-                },
-                variants = p.ProductVariants.Select(v => new
-                {
-                    v.VariantId,
-                    v.Color,
-                    v.UpholsteryMaterial,
-                    v.Price,
-                    v.DiscountPrice,
-                    v.DiscountPercent,
-                    v.IsOnSale,
-                    v.StockQuantity
-                })
-            };
-        });
-
+        var result = products.Select(p => MapProductResponse(p, baseUrl));
         return Ok(result);
     }
 
     /// <summary>
     /// Lấy danh sách các sản phẩm mới nhất (mặc định lấy 5 sản phẩm mới nhất thuộc bất kỳ category nào)
-    /// Endpoint: GET /api/products/new-arrivals hoặc GET /api/products/latest
+    /// Endpoint: GET /api/products/newest?limit=5
     /// </summary>
     [HttpGet("newest")]
     public async Task<IActionResult> GetNewArrivals([FromQuery] int limit = 5)
@@ -113,61 +102,12 @@ public class ProductsController : ControllerBase
         var products = await _db.Products
             .AsNoTracking()
             .Include(p => p.Category)
-            .Include(p => p.ProductVariants)
             .OrderByDescending(p => p.CreatedAt)
             .ThenByDescending(p => p.ProductId)
             .Take(limit)
             .ToListAsync();
 
-        var result = products.Select(p =>
-        {
-            var defaultVariant = p.ProductVariants
-                .OrderByDescending(v => v.DiscountPercent ?? 0)
-                .FirstOrDefault();
-
-            var discountPercent = defaultVariant?.DiscountPercent ?? 0;
-            var originalPrice = defaultVariant?.Price ?? 0;
-            var discountPrice = defaultVariant?.DiscountPrice 
-                ?? (discountPercent > 0 ? originalPrice * (1 - (discountPercent / 100)) : originalPrice);
-
-            var imageUrl = !string.IsNullOrEmpty(p.Category?.ImageUrl)
-                ? $"{baseUrl}{p.Category.ImageUrl}"
-                : $"{baseUrl}/images/chair.png";
-
-            return new
-            {
-                p.ProductId,
-                p.ProductName,
-                p.Description,
-                p.CategoryId,
-                categoryName = p.Category?.CategoryName,
-                imageUrl,
-                discountPercent,
-                originalPrice,
-                discountPrice,
-                p.BaseMaterial,
-                p.CreatedAt,
-                dimensions = new
-                {
-                    p.LengthCm,
-                    p.WidthCm,
-                    p.HeightCm,
-                    p.WeightKg
-                },
-                variants = p.ProductVariants.Select(v => new
-                {
-                    v.VariantId,
-                    v.Color,
-                    v.UpholsteryMaterial,
-                    v.Price,
-                    v.DiscountPrice,
-                    v.DiscountPercent,
-                    v.IsOnSale,
-                    v.StockQuantity
-                })
-            };
-        });
-
+        var result = products.Select(p => MapProductResponse(p, baseUrl));
         return Ok(result);
     }
 
@@ -183,7 +123,6 @@ public class ProductsController : ControllerBase
         var query = _db.Products
             .AsNoTracking()
             .Include(p => p.Category)
-            .Include(p => p.ProductVariants)
             .AsQueryable();
 
         if (categoryId.HasValue)
@@ -196,37 +135,7 @@ public class ProductsController : ControllerBase
             .Take(limit)
             .ToListAsync();
 
-        var result = products.Select(p =>
-        {
-            var defaultVariant = p.ProductVariants
-                .OrderByDescending(v => v.DiscountPercent ?? 0)
-                .FirstOrDefault();
-
-            var discountPercent = defaultVariant?.DiscountPercent ?? 0;
-            var originalPrice = defaultVariant?.Price ?? 0;
-            var discountPrice = defaultVariant?.DiscountPrice 
-                ?? (discountPercent > 0 ? originalPrice * (1 - (discountPercent / 100)) : originalPrice);
-
-            var imageUrl = !string.IsNullOrEmpty(p.Category?.ImageUrl)
-                ? $"{baseUrl}{p.Category.ImageUrl}"
-                : $"{baseUrl}/images/chair.png";
-
-            return new
-            {
-                p.ProductId,
-                p.ProductName,
-                p.Description,
-                p.CategoryId,
-                categoryName = p.Category?.CategoryName,
-                imageUrl,
-                discountPercent,
-                originalPrice,
-                discountPrice,
-                p.BaseMaterial,
-                variantsCount = p.ProductVariants.Count
-            };
-        });
-
+        var result = products.Select(p => MapProductResponse(p, baseUrl));
         return Ok(result);
     }
 
@@ -242,57 +151,12 @@ public class ProductsController : ControllerBase
         var product = await _db.Products
             .AsNoTracking()
             .Include(p => p.Category)
-            .Include(p => p.ProductVariants)
             .FirstOrDefaultAsync(p => p.ProductId == id);
 
         if (product == null)
             return NotFound(new { message = "Không tìm thấy sản phẩm" });
 
-        var defaultVariant = product.ProductVariants
-            .OrderByDescending(v => v.DiscountPercent ?? 0)
-            .FirstOrDefault();
-
-        var discountPercent = defaultVariant?.DiscountPercent ?? 0;
-        var originalPrice = defaultVariant?.Price ?? 0;
-        var discountPrice = defaultVariant?.DiscountPrice 
-            ?? (discountPercent > 0 ? originalPrice * (1 - (discountPercent / 100)) : originalPrice);
-
-        var imageUrl = !string.IsNullOrEmpty(product.Category?.ImageUrl)
-            ? $"{baseUrl}{product.Category.ImageUrl}"
-            : $"{baseUrl}/images/chair.png";
-
-        var result = new
-        {
-            product.ProductId,
-            product.ProductName,
-            product.Description,
-            product.CategoryId,
-            categoryName = product.Category?.CategoryName,
-            imageUrl,
-            discountPercent,
-            originalPrice,
-            discountPrice,
-            product.BaseMaterial,
-            dimensions = new
-            {
-                product.LengthCm,
-                product.WidthCm,
-                product.HeightCm,
-                product.WeightKg
-            },
-            variants = product.ProductVariants.Select(v => new
-            {
-                v.VariantId,
-                v.Color,
-                v.UpholsteryMaterial,
-                v.Price,
-                v.DiscountPrice,
-                v.DiscountPercent,
-                v.IsOnSale,
-                v.StockQuantity
-            })
-        };
-
+        var result = MapProductResponse(product, baseUrl);
         return Ok(result);
     }
 }

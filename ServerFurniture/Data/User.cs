@@ -29,7 +29,7 @@ public partial class User
 
     public string? Avatar { get; set; }
 
-    public virtual Cart? Cart { get; set; }
+    public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
 
     public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();
 

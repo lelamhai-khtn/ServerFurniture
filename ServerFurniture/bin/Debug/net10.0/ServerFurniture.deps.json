@@ -11,8 +11,8 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": "10.0.13",
           "Microsoft.AspNetCore.OpenApi": "10.0.13",
           "Microsoft.EntityFrameworkCore": "10.0.13",
+          "Microsoft.EntityFrameworkCore.Design": "10.0.13",
           "Microsoft.EntityFrameworkCore.SqlServer": "10.0.13",
-          "Microsoft.EntityFrameworkCore.Tools": "10.0.13",
           "Scalar.AspNetCore": "2.18.0",
           "Swashbuckle.AspNetCore.SwaggerUI": "10.3.0"
         },
@@ -527,11 +527,6 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Tools/10.0.13": {
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "10.0.13"
-        }
-      },
       "Microsoft.Extensions.DependencyModel/10.0.13": {
         "runtime": {
           "lib/net10.0/Microsoft.Extensions.DependencyModel.dll": {
@@ -1004,13 +999,6 @@
       "sha512": "sha512-DY67j782oRdwA1vv7aAG161vgkdi4CqJCj0r391KmPkaKpnqWI6BvB7ghUefBauXZtYI1gJNixtt1dcIfNctfw==",
       "path": "microsoft.entityframeworkcore.sqlserver/10.0.13",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.10.0.13.nupkg.sha512"
-    },
-    "Microsoft.EntityFrameworkCore.Tools/10.0.13": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-JaF8pbc70aFArjhglbm8R55HVbnA+xl/1IzfqokY6d/CwVh+mIUIxiCxnd5fR1BsfOUgwwC1fUYw1fOEAjADyA==",
-      "path": "microsoft.entityframeworkcore.tools/10.0.13",
-      "hashPath": "microsoft.entityframeworkcore.tools.10.0.13.nupkg.sha512"
     },
     "Microsoft.Extensions.DependencyModel/10.0.13": {
       "type": "package",

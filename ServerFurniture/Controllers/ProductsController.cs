@@ -140,6 +140,62 @@ public class ProductsController : ControllerBase
     }
 
     /// <summary>
+    /// Tìm kiếm sản phẩm theo tên, có thể lọc theo categoryId và khoảng giá.
+    /// Nếu không truyền filter, trả về danh sách sản phẩm mới nhất.
+    /// Endpoint: GET /api/products/search?name=sofa&categoryId=1&minPrice=100&maxPrice=500
+    /// </summary>
+    [HttpGet("search")]
+    public async Task<IActionResult> Search(
+        [FromQuery] string? name = null,
+        [FromQuery] int? categoryId = null,
+        [FromQuery] decimal? minPrice = null,
+        [FromQuery] decimal? maxPrice = null,
+        [FromQuery] int limit = 20)
+    {
+        if (minPrice.HasValue && maxPrice.HasValue && minPrice > maxPrice)
+            return BadRequest(new { message = "Khoảng giá không hợp lệ" });
+
+        if (limit <= 0)
+            limit = 20;
+
+        var baseUrl = $"{Request.Scheme}://{Request.Host}";
+
+        var query = _db.Products
+            .AsNoTracking()
+            .Include(p => p.Category)
+            .AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(name))
+        {
+            query = query.Where(p => EF.Functions.Like(p.ProductName, $"%{name}%"));
+        }
+
+        if (categoryId.HasValue)
+        {
+            query = query.Where(p => p.CategoryId == categoryId.Value);
+        }
+
+        if (minPrice.HasValue)
+        {
+            query = query.Where(p => p.Price >= minPrice.Value);
+        }
+
+        if (maxPrice.HasValue)
+        {
+            query = query.Where(p => p.Price <= maxPrice.Value);
+        }
+
+        var products = await query
+            .OrderByDescending(p => p.CreatedAt)
+            .ThenByDescending(p => p.ProductId)
+            .Take(limit)
+            .ToListAsync();
+
+        var result = products.Select(p => MapProductResponse(p, baseUrl));
+        return Ok(result);
+    }
+
+    /// <summary>
     /// Lấy chi tiết một sản phẩm theo ID
     /// Endpoint: GET /api/products/{id}
     /// </summary>

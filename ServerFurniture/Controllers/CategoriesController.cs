@@ -6,7 +6,6 @@ using ServerFurniture.Data;
 namespace ServerFurniture.Controllers;
 
 [ApiController]
-[Authorize]
 [Route("api/[controller]")]
 public class CategoriesController : ControllerBase
 {

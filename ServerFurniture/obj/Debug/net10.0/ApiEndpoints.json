@@ -326,6 +326,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ServerFurniture.Controllers.WishlistController",
+    "Method": "ToggleWishlist",
+    "RelativePath": "api/Wishlist/products/{productId}/toggle",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ServerFurniture.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

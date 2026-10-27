@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ServerFurniture.Data;
+using System.Security.Claims;
 
 namespace ServerFurniture.Controllers;
 
@@ -17,7 +18,30 @@ public class ProductsController : ControllerBase
         _db = db;
     }
 
-    private static object MapProductResponse(Product p, string baseUrl)
+    private int? GetUserId()
+    {
+        var value = User.FindFirstValue(ClaimTypes.NameIdentifier)
+            ?? User.FindFirstValue("sub");
+
+        return int.TryParse(value, out var userId) ? userId : null;
+    }
+
+    private async Task<HashSet<int>> GetWishlistedProductIdsAsync(IEnumerable<int> productIds)
+    {
+        var userId = GetUserId();
+        var ids = productIds.Distinct().ToList();
+
+        if (!userId.HasValue || ids.Count == 0)
+            return new HashSet<int>();
+
+        return await _db.Wishlists
+            .AsNoTracking()
+            .Where(w => w.UserId == userId.Value && ids.Contains(w.ProductId))
+            .Select(w => w.ProductId)
+            .ToHashSetAsync();
+    }
+
+    private static object MapProductResponse(Product p, string baseUrl, bool isWishlisted = false)
     {
         var discountPercent = (p.Price > 0 && p.DiscountPrice.HasValue && p.DiscountPrice < p.Price)
             ? Math.Round((1 - (p.DiscountPrice.Value / p.Price)) * 100, 2)
@@ -47,6 +71,7 @@ public class ProductsController : ControllerBase
             stockQuantity = p.StockQuantity ?? 0,
             p.BaseMaterial,
             p.CreatedAt,
+            isWishlisted,
             dimensions = new
             {
                 p.LengthCm,
@@ -86,7 +111,8 @@ public class ProductsController : ControllerBase
                 .ToListAsync();
         }
 
-        var result = products.Select(p => MapProductResponse(p, baseUrl));
+        var wishlistedProductIds = await GetWishlistedProductIdsAsync(products.Select(p => p.ProductId));
+        var result = products.Select(p => MapProductResponse(p, baseUrl, wishlistedProductIds.Contains(p.ProductId)));
         return Ok(result);
     }
 
@@ -107,7 +133,8 @@ public class ProductsController : ControllerBase
             .Take(limit)
             .ToListAsync();
 
-        var result = products.Select(p => MapProductResponse(p, baseUrl));
+        var wishlistedProductIds = await GetWishlistedProductIdsAsync(products.Select(p => p.ProductId));
+        var result = products.Select(p => MapProductResponse(p, baseUrl, wishlistedProductIds.Contains(p.ProductId)));
         return Ok(result);
     }
 
@@ -135,7 +162,8 @@ public class ProductsController : ControllerBase
             .Take(limit)
             .ToListAsync();
 
-        var result = products.Select(p => MapProductResponse(p, baseUrl));
+        var wishlistedProductIds = await GetWishlistedProductIdsAsync(products.Select(p => p.ProductId));
+        var result = products.Select(p => MapProductResponse(p, baseUrl, wishlistedProductIds.Contains(p.ProductId)));
         return Ok(result);
     }
 
@@ -191,7 +219,8 @@ public class ProductsController : ControllerBase
             .Take(limit)
             .ToListAsync();
 
-        var result = products.Select(p => MapProductResponse(p, baseUrl));
+        var wishlistedProductIds = await GetWishlistedProductIdsAsync(products.Select(p => p.ProductId));
+        var result = products.Select(p => MapProductResponse(p, baseUrl, wishlistedProductIds.Contains(p.ProductId)));
         return Ok(result);
     }
 
@@ -212,7 +241,8 @@ public class ProductsController : ControllerBase
         if (product == null)
             return NotFound(new { message = "Không tìm thấy sản phẩm" });
 
-        var result = MapProductResponse(product, baseUrl);
+        var isWishlistedSet = await GetWishlistedProductIdsAsync(new[] { product.ProductId });
+        var result = MapProductResponse(product, baseUrl, isWishlistedSet.Contains(product.ProductId));
         return Ok(result);
     }
 }

@@ -74,8 +74,7 @@
               "RelativeToolTip": "ServerFurniture\\Controllers\\CategoriesController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-26T16:54:08.754Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-26T16:54:08.754Z"
             },
             {
               "$type": "Document",
@@ -87,8 +86,7 @@
               "RelativeToolTip": "ServerFurniture\\Data\\OrderItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-26T11:00:08.783Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-26T11:00:08.783Z"
             },
             {
               "$type": "Document",
@@ -100,8 +98,7 @@
               "RelativeToolTip": "ServerFurniture\\Data\\Cart.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-26T10:58:33.267Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-26T10:58:33.267Z"
             },
             {
               "$type": "Document",
@@ -113,8 +110,7 @@
               "RelativeToolTip": "ServerFurniture\\Controllers\\CartController.cs",
               "ViewState": "AgIAAIsAAAAAAAAAAADgv6QAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-26T10:08:09.693Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-26T10:08:09.693Z"
             },
             {
               "$type": "Document",
@@ -124,7 +120,7 @@
               "RelativeDocumentMoniker": "ServerFurniture\\Controllers\\ProductsController.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\ProductsController.cs",
               "RelativeToolTip": "ServerFurniture\\Controllers\\ProductsController.cs",
-              "ViewState": "AgIAAJcAAAAAAAAAAAAAwJkAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAJcAAAAAAAAAAAAAwKQAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-26T09:37:11.125Z",
               "EditorCaption": ""
@@ -199,8 +195,7 @@
               "RelativeToolTip": "ServerFurniture\\Program.cs",
               "ViewState": "AgIAAEEAAAAAAAAAAAAAAE0AAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-24T08:19:15.623Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-24T08:19:15.623Z"
             },
             {
               "$type": "Document",
@@ -212,8 +207,7 @@
               "RelativeToolTip": "ServerFurniture\\Controllers\\AuthController.cs",
               "ViewState": "AgIAALoAAAAAAAAAAAAgwFUAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-25T15:42:10.569Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-25T15:42:10.569Z"
             }
           ]
         }

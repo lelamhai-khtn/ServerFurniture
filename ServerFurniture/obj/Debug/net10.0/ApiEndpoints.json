@@ -326,6 +326,58 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ServerFurniture.Controllers.UsersController",
+    "Method": "UpdateAvatar",
+    "RelativePath": "api/Users/avatar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ServerFurniture.Controllers.UpdateAvatarRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServerFurniture.Controllers.UsersController",
+    "Method": "DeleteAvatar",
+    "RelativePath": "api/Users/avatar",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServerFurniture.Controllers.UsersController",
+    "Method": "UploadAvatar",
+    "RelativePath": "api/Users/avatar/upload",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServerFurniture.Controllers.UsersController",
+    "Method": "GetProfile",
+    "RelativePath": "api/Users/profile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ServerFurniture.Controllers.WishlistController",
     "Method": "GetWishlistProducts",
     "RelativePath": "api/Wishlist/products",

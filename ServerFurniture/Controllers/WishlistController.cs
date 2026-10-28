@@ -71,4 +71,50 @@ public class WishlistController : ControllerBase
             isWishlisted = true
         });
     }
+
+    // GET /api/wishlist/products
+    [HttpGet("products")]
+    public async Task<IActionResult> GetWishlistProducts()
+    {
+        var userId = GetUserId();
+
+        var wishlistProducts = await _db.Wishlists
+            .Where(w => w.UserId == userId)
+            .Select(w => new
+            {
+                w.WishlistId,
+                w.ProductId,
+                w.CreatedAt,
+                Product = new
+                {
+                    w.Product.ProductId,
+                    w.Product.ProductName,
+                    w.Product.Description,
+                    w.Product.ImageUrl,
+                    w.Product.Price,
+                    w.Product.DiscountPrice,
+                    w.Product.StockQuantity,
+                    w.Product.Color,
+                    w.Product.UpholsteryMaterial,
+                    w.Product.LengthCm,
+                    w.Product.WidthCm,
+                    w.Product.HeightCm,
+                    w.Product.WeightKg,
+                    w.Product.BaseMaterial,
+                    w.Product.CreatedAt
+                }
+            })
+            .OrderByDescending(w => w.CreatedAt)
+            .ToListAsync();
+
+        if (!wishlistProducts.Any())
+            return Ok(new { message = "Danh sách yêu thích trống", products = new List<object>() });
+
+        return Ok(new
+        {
+            message = "Lấy danh sách yêu thích thành công",
+            totalCount = wishlistProducts.Count,
+            products = wishlistProducts
+        });
+    }
 }

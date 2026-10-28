@@ -6,10 +6,10 @@
   },
   "servers": [
     {
-      "url": "http://192.168.1.10:7279"
+      "url": "http://192.168.1.11:7279"
     },
     {
-      "url": "http://192.168.1.10:5000"
+      "url": "http://192.168.1.11:5000"
     }
   ],
   "paths": {
@@ -623,6 +623,18 @@
               "format": "int32"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Wishlist/products": {
+      "get": {
+        "tags": [
+          "Wishlist"
         ],
         "responses": {
           "200": {

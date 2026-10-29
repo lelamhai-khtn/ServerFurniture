@@ -477,6 +477,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ServerFurniture.Controllers.UsersController",
+    "Method": "UpdateProfile",
+    "RelativePath": "api/Users/profile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ServerFurniture.Controllers.UpdateProfileRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ServerFurniture.Controllers.WishlistController",
     "Method": "GetWishlistProducts",
     "RelativePath": "api/Wishlist/products",

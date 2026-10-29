@@ -74,15 +74,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{c6f34f0d-7ae5-4f3a-be61-fe0c21ae9eb8}"
             },
             {
               "$type": "Document",
@@ -94,8 +90,7 @@
               "RelativeToolTip": "ServerFurniture\\Controllers\\NotificationsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAMQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-28T15:57:27.262Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-28T15:57:27.262Z"
             },
             {
               "$type": "Document",
@@ -105,7 +100,7 @@
               "RelativeDocumentMoniker": "ServerFurniture\\Controllers\\UsersController.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\UsersController.cs",
               "RelativeToolTip": "ServerFurniture\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAQwAkAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAALYAAAAAAAAAAAAAAAkAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-28T09:56:13.497Z",
               "EditorCaption": ""
@@ -120,8 +115,7 @@
               "RelativeToolTip": "ServerFurniture\\Data\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-28T09:54:53.78Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-28T09:54:53.78Z"
             },
             {
               "$type": "Document",
@@ -133,8 +127,7 @@
               "RelativeToolTip": "ServerFurniture\\Controllers\\WishlistController.cs",
               "ViewState": "AgIAAD4AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-28T04:14:02.689Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-28T04:14:02.689Z"
             },
             {
               "$type": "Document",
@@ -206,8 +199,7 @@
               "RelativeToolTip": "ServerFurniture\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-10-24T08:19:32.167Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-24T08:19:32.167Z"
             },
             {
               "$type": "Document",

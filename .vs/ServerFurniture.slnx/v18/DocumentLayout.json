@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\data\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\data\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\data\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\data\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -65,6 +73,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|c:\\users\\admin\\documents\\ptit\\hk7\\android\\serverfurniture\\serverfurniture\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE9868E-27E7-985E-F7C6-285DDF6B8B0F}|ServerFurniture\\ServerFurniture.csproj|solutionrelative:serverfurniture\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,19 +86,54 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{c6f34f0d-7ae5-4f3a-be61-fe0c21ae9eb8}"
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "ServerFurniture\\Controllers\\OrdersController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "ServerFurniture\\Controllers\\OrdersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-29T16:39:05.369Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 0,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Data\\Order.cs",
+              "RelativeDocumentMoniker": "ServerFurniture\\Data\\Order.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Data\\Order.cs",
+              "RelativeToolTip": "ServerFurniture\\Data\\Order.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-29T16:37:08.464Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Payment.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Data\\Payment.cs",
+              "RelativeDocumentMoniker": "ServerFurniture\\Data\\Payment.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Data\\Payment.cs",
+              "RelativeToolTip": "ServerFurniture\\Data\\Payment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-29T16:36:58.344Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
               "Title": "NotificationsController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\NotificationsController.cs",
               "RelativeDocumentMoniker": "ServerFurniture\\Controllers\\NotificationsController.cs",
@@ -94,25 +141,24 @@
               "RelativeToolTip": "ServerFurniture\\Controllers\\NotificationsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAMQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-28T15:57:27.262Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-28T15:57:27.262Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "ServerFurniture\\Controllers\\UsersController.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\UsersController.cs",
               "RelativeToolTip": "ServerFurniture\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAQwAkAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAALYAAAAAAAAAAAAAAAkAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-28T09:56:13.497Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Data\\User.cs",
               "RelativeDocumentMoniker": "ServerFurniture\\Data\\User.cs",
@@ -120,12 +166,11 @@
               "RelativeToolTip": "ServerFurniture\\Data\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-28T09:54:53.78Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-28T09:54:53.78Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "WishlistController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\WishlistController.cs",
               "RelativeDocumentMoniker": "ServerFurniture\\Controllers\\WishlistController.cs",
@@ -133,12 +178,11 @@
               "RelativeToolTip": "ServerFurniture\\Controllers\\WishlistController.cs",
               "ViewState": "AgIAAD4AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-28T04:14:02.689Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-28T04:14:02.689Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "ProductsController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\ProductsController.cs",
               "RelativeDocumentMoniker": "ServerFurniture\\Controllers\\ProductsController.cs",
@@ -150,7 +194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "FurnitureContext.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Data\\FurnitureContext.cs",
               "RelativeDocumentMoniker": "ServerFurniture\\Data\\FurnitureContext.cs",
@@ -162,7 +206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "ServerFurniture.csproj",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\ServerFurniture.csproj",
               "RelativeDocumentMoniker": "ServerFurniture\\ServerFurniture.csproj",
@@ -174,7 +218,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Program.cs",
               "RelativeDocumentMoniker": "ServerFurniture\\Program.cs",
@@ -186,7 +230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "CategoriesController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\CategoriesController.cs",
               "RelativeDocumentMoniker": "ServerFurniture\\Controllers\\CategoriesController.cs",
@@ -198,7 +242,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "ServerFurniture\\Properties\\launchSettings.json",
@@ -206,12 +250,11 @@
               "RelativeToolTip": "ServerFurniture\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-10-24T08:19:32.167Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-24T08:19:32.167Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "CartController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\CartController.cs",
               "RelativeDocumentMoniker": "ServerFurniture\\Controllers\\CartController.cs",
@@ -223,7 +266,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "Cart.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Data\\Cart.cs",
               "RelativeDocumentMoniker": "ServerFurniture\\Data\\Cart.cs",
@@ -235,7 +278,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "OrderItem.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Data\\OrderItem.cs",
               "RelativeDocumentMoniker": "ServerFurniture\\Data\\OrderItem.cs",
@@ -247,7 +290,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "FurnitureContext.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Models\\FurnitureContext.cs",
               "RelativeDocumentMoniker": "ServerFurniture\\Models\\FurnitureContext.cs",
@@ -259,7 +302,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\appsettings.json",
               "RelativeDocumentMoniker": "ServerFurniture\\appsettings.json",
@@ -271,7 +314,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Documents\\PTIT\\HK7\\Android\\ServerFurniture\\ServerFurniture\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "ServerFurniture\\Controllers\\AuthController.cs",

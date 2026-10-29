@@ -190,9 +190,57 @@ public class UsersController : ControllerBase
             createdAt = user.CreatedAt
         });
     }
+
+    // PUT /api/users/profile
+    [Authorize]
+    [HttpPut("profile")]
+    public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileRequest request)
+    {
+        if (request == null)
+            return BadRequest(new { message = "Yêu cầu không hợp lệ" });
+
+        var userId = GetUserId();
+        var user = await _db.Users.FirstOrDefaultAsync(u => u.UserId == userId);
+
+        if (user == null)
+            return NotFound(new { message = "Không tìm thấy người dùng" });
+
+        // Cập nhật các trường được cho phép
+        if (!string.IsNullOrWhiteSpace(request.FullName))
+            user.FullName = request.FullName;
+
+        if (!string.IsNullOrWhiteSpace(request.Phone))
+            user.Phone = request.Phone;
+
+        if (!string.IsNullOrWhiteSpace(request.Gender))
+            user.Gender = request.Gender;
+
+        if (!string.IsNullOrWhiteSpace(request.Address))
+            user.Address = request.Address;
+
+        await _db.SaveChangesAsync();
+
+        return Ok(new
+        {
+            message = "Cập nhật thông tin thành công",
+            userId = user.UserId,
+            fullName = user.FullName,
+            phone = user.Phone,
+            gender = user.Gender,
+            address = user.Address
+        });
+    }
 }
 
 public class UpdateAvatarRequest
 {
     public string? AvatarUrl { get; set; }
+}
+
+public class UpdateProfileRequest
+{
+    public string? FullName { get; set; }
+    public string? Phone { get; set; }
+    public string? Gender { get; set; }
+    public string? Address { get; set; }
 }

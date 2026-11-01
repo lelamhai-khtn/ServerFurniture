@@ -12,10 +12,12 @@ namespace ServerFurniture.Controllers;
 public class OrdersController : ControllerBase
 {
     private readonly FurnitureContext _db;
+    private readonly IConfiguration _config;
 
-    public OrdersController(FurnitureContext db)
+    public OrdersController(FurnitureContext db, IConfiguration config)
     {
         _db = db;
+        _config = config;
     }
 
     private int GetUserId() =>
@@ -88,9 +90,8 @@ public class OrdersController : ControllerBase
 
             // Xử lý lưu thông tin thanh toán vào bảng Payments
             var gateway = string.IsNullOrWhiteSpace(request.PaymentGateway) ? "COD" : request.PaymentGateway.Trim();
-            var paymentStatus = gateway.Equals("COD", StringComparison.OrdinalIgnoreCase)
-                ? "Chưa thanh toán"
-                : "Chờ thanh toán";
+            var isSepay = gateway.Equals("Sepay", StringComparison.OrdinalIgnoreCase);
+            var paymentStatus = isSepay ? "Chờ thanh toán" : "Chưa thanh toán";
 
             var payment = new Payment
             {
@@ -107,6 +108,24 @@ public class OrdersController : ControllerBase
 
             await _db.SaveChangesAsync();
 
+            // Nếu là SePay: tạo sẵn link ảnh mã QR và thông tin chuyển khoản cho client
+            string? qrCodeUrl = null;
+            string? bank = null;
+            string? accountNumber = null;
+            string? transferContent = null;
+
+            if (isSepay)
+            {
+                bank = _config["Sepay:Bank"] ?? "MBBank";
+                accountNumber = _config["Sepay:AccountNumber"] ?? "0985257578";
+                var prefix = _config["Sepay:Prefix"] ?? "DH";
+                transferContent = $"{prefix}{order.OrderId}";
+                var amountInt = (long)Math.Round(order.TotalAmount);
+
+                // Link ảnh mã QR chuẩn từ SePay
+                qrCodeUrl = $"https://qr.sepay.vn/img?acc={accountNumber}&bank={bank}&amount={amountInt}&des={transferContent}";
+            }
+
             return Ok(new
             {
                 message = "Tạo đơn hàng thành công",
@@ -118,7 +137,11 @@ public class OrdersController : ControllerBase
                 {
                     paymentId = payment.PaymentId,
                     paymentGateway = payment.PaymentGateway,
-                    paymentStatus = payment.PaymentStatus
+                    paymentStatus = payment.PaymentStatus,
+                    qrCodeUrl,
+                    bank,
+                    accountNumber,
+                    transferContent
                 },
                 createdAt = order.CreatedAt
             });

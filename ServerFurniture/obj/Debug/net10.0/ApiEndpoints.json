@@ -446,6 +446,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ServerFurniture.Controllers.PaymentsController",
+    "Method": "HandleSepayWebhook",
+    "RelativePath": "api/Payments/sepay-webhook",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "payload",
+        "Type": "ServerFurniture.Controllers.SepayWebhookPayload",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ServerFurniture.Controllers.ProductsController",
     "Method": "GetAll",
     "RelativePath": "api/Products",

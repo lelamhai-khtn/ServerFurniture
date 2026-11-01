@@ -6,7 +6,10 @@
   },
   "servers": [
     {
-      "url": "http://192.168.1.8:7279"
+      "url": "https://localhost:7279"
+    },
+    {
+      "url": "http://localhost:5000"
     },
     {
       "url": "http://192.168.1.8:5000"
@@ -756,6 +759,38 @@
         }
       }
     },
+    "/api/Payments/sepay-webhook": {
+      "post": {
+        "tags": [
+          "Payments"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SepayWebhookPayload"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SepayWebhookPayload"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SepayWebhookPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Products/top-discounts": {
       "get": {
         "tags": [
@@ -1297,6 +1332,89 @@
           }
         }
       },
+      "SepayWebhookPayload": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int64"
+          },
+          "gateway": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "transactionDate": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "accountNumber": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "subAccount": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "code": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "content": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "transferType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "transferAmount": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
+          "referenceCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "accumulated": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "number",
+              "string"
+            ],
+            "format": "double"
+          }
+        }
+      },
       "UpdateAvatarRequest": {
         "type": "object",
         "properties": {
@@ -1442,6 +1560,9 @@
     },
     {
       "name": "Orders"
+    },
+    {
+      "name": "Payments"
     },
     {
       "name": "Products"

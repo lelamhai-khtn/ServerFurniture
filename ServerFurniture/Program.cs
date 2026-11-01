@@ -39,7 +39,7 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<IOSRMService, OSRMService>();
 
-// Configure CORS for Google Sign-In
+// Configure CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -65,7 +65,11 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseHttpsRedirection();
+// Luôn bật CORS cho mọi request từ ngrok/browser
+app.UseCors("AllowAll");
+
+// Tắt HttpsRedirection khi chạy qua ngrok tunnel để tránh bị chặn chuyển hướng
+// app.UseHttpsRedirection();
 
 // Enable serving static files from wwwroot
 app.UseStaticFiles();
@@ -75,14 +79,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
-// Note: Migrations are intentionally not applied at startup because the database
-// was scaffolded from an existing schema. RefreshTokens table was created manually via SQL.
-// Uncomment below if adding new migrations in the future.
-// using (var scope = app.Services.CreateScope())
-// {
-//     var db = scope.ServiceProvider.GetRequiredService<FurnitureContext>();
-//     db.Database.Migrate();
-// }
 
 app.Run();

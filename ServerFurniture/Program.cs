@@ -37,6 +37,7 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddHttpClient();
+builder.Services.AddHttpClient<IOSRMService, OSRMService>();
 
 // Configure CORS for Google Sign-In
 builder.Services.AddCors(options =>

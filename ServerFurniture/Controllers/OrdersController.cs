@@ -83,8 +83,24 @@ public class OrdersController : ControllerBase
                 _db.OrderItems.Add(orderItem);
             }
 
-            // Cập nhật tổng tiền
+            // Cập nhật tổng tiền đơn hàng
             order.TotalAmount = totalAmount;
+
+            // Xử lý lưu thông tin thanh toán vào bảng Payments
+            var gateway = string.IsNullOrWhiteSpace(request.PaymentGateway) ? "COD" : request.PaymentGateway.Trim();
+            var paymentStatus = gateway.Equals("COD", StringComparison.OrdinalIgnoreCase)
+                ? "Chưa thanh toán"
+                : "Chờ thanh toán";
+
+            var payment = new Payment
+            {
+                OrderId = order.OrderId,
+                PaymentGateway = gateway,
+                PaymentStatus = paymentStatus,
+                PaidAt = null
+            };
+
+            _db.Payments.Add(payment);
 
             // Xóa các item khỏi giỏ hàng
             _db.Carts.RemoveRange(cartItems);
@@ -98,6 +114,12 @@ public class OrdersController : ControllerBase
                 orderStatus = order.OrderStatus,
                 totalAmount = order.TotalAmount,
                 shippingAddress = order.ShippingAddress,
+                payment = new
+                {
+                    paymentId = payment.PaymentId,
+                    paymentGateway = payment.PaymentGateway,
+                    paymentStatus = payment.PaymentStatus
+                },
                 createdAt = order.CreatedAt
             });
         }
@@ -115,10 +137,11 @@ public class OrdersController : ControllerBase
         int skipCount = skip ?? 0;
         int takeCount = take ?? 10;
 
-        var query = _db.Orders
+        IQueryable<Order> query = _db.Orders
             .Where(o => o.UserId == userId)
             .Include(o => o.OrderItems)
-            .ThenInclude(oi => oi.Product);
+            .ThenInclude(oi => oi.Product)
+            .Include(o => o.Payment);
 
         // Lọc theo status nếu có
         if (!string.IsNullOrWhiteSpace(status))
@@ -138,6 +161,8 @@ public class OrdersController : ControllerBase
                 o.ShippingAddress,
                 o.DeliveryDate,
                 o.DeliveryTimeSlot,
+                PaymentGateway = o.Payment != null ? o.Payment.PaymentGateway : "COD",
+                PaymentStatus = o.Payment != null ? o.Payment.PaymentStatus : "Chưa thanh toán",
                 o.CreatedAt,
                 ItemCount = o.OrderItems.Count
             })
@@ -164,6 +189,7 @@ public class OrdersController : ControllerBase
             .Where(o => o.OrderId == id && o.UserId == userId)
             .Include(o => o.OrderItems)
             .ThenInclude(oi => oi.Product)
+            .Include(o => o.Payment)
             .FirstOrDefaultAsync();
 
         if (order == null)
@@ -178,6 +204,14 @@ public class OrdersController : ControllerBase
             shippingAddress = order.ShippingAddress,
             deliveryDate = order.DeliveryDate,
             deliveryTimeSlot = order.DeliveryTimeSlot,
+            payment = order.Payment != null ? new
+            {
+                order.Payment.PaymentId,
+                order.Payment.PaymentGateway,
+                order.Payment.PaymentStatus,
+                order.Payment.TransactionId,
+                order.Payment.PaidAt
+            } : null,
             createdAt = order.CreatedAt,
             items = order.OrderItems.Select(oi => new
             {
@@ -319,6 +353,7 @@ public class CreateOrderRequest
     public string? ShippingAddress { get; set; }
     public DateOnly? DeliveryDate { get; set; }
     public string? DeliveryTimeSlot { get; set; }
+    public string? PaymentGateway { get; set; } // "COD" hoặc "Sepay" (mặc định "COD" nếu để trống)
 }
 
 public class UpdateOrderStatusRequest

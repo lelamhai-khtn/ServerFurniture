@@ -4,3 +4,9 @@ GET {{ServerFurniture_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+### Tính khoảng cách OSRM & Phí giao hàng bằng Xe Van / Bán tải 500kg (Hồ Gươm -> Ngã Tư Sở)
+GET {{ServerFurniture_HostAddress}}/api/distance?originLat=21.028511&originLng=105.854444&destLat=21.003118&destLng=105.820172
+Accept: application/json
+
+###
